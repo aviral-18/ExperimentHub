@@ -1,0 +1,148 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ------------------------------------------------------------------ */
+/* Design tokens — dark enterprise theme (Linear / Vercel / Datadog).  */
+/* ------------------------------------------------------------------ */
+@layer base {
+  :root,
+  .dark {
+    --background: 224 33% 5%;
+    --surface: 224 28% 7%;
+    --card: 224 26% 9%;
+    --elevated: 224 22% 12%;
+    --border: 225 16% 17%;
+    --input: 225 16% 15%;
+    --ring: 245 80% 66%;
+    --foreground: 210 25% 94%;
+    --muted: 224 20% 14%;
+    --muted-foreground: 220 12% 60%;
+    --primary: 245 80% 66%;
+    --primary-foreground: 0 0% 100%;
+    --accent: 190 90% 55%;
+    --accent-foreground: 224 33% 5%;
+    --success: 152 58% 48%;
+    --warning: 38 92% 58%;
+    --danger: 352 78% 62%;
+    --info: 210 90% 62%;
+    --radius: 0.9rem;
+  }
+
+  .light {
+    --background: 220 30% 97%;
+    --surface: 0 0% 100%;
+    --card: 0 0% 100%;
+    --elevated: 220 25% 99%;
+    --border: 220 16% 88%;
+    --input: 220 16% 90%;
+    --ring: 245 80% 60%;
+    --foreground: 224 40% 12%;
+    --muted: 220 20% 94%;
+    --muted-foreground: 220 10% 40%;
+    --primary: 245 75% 58%;
+    --primary-foreground: 0 0% 100%;
+    --accent: 190 85% 42%;
+    --accent-foreground: 0 0% 100%;
+    --success: 152 55% 40%;
+    --warning: 32 90% 48%;
+    --danger: 352 70% 52%;
+    --info: 210 85% 52%;
+  }
+
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: "Inter", system-ui, sans-serif;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  ::selection {
+    background: hsl(var(--primary) / 0.3);
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 99px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground) / 0.5);
+    background-clip: content-box;
+  }
+}
+
+@layer components {
+  /* Glass surface used by cards, panels, the sidebar and top bar. */
+  .glass {
+    background: linear-gradient(
+      180deg,
+      hsl(var(--card) / 0.9),
+      hsl(var(--surface) / 0.85)
+    );
+    backdrop-filter: blur(12px);
+    border: 1px solid hsl(var(--border) / 0.8);
+  }
+
+  .glass-subtle {
+    background: hsl(var(--card) / 0.6);
+    backdrop-filter: blur(8px);
+    border: 1px solid hsl(var(--border) / 0.6);
+  }
+
+  /* Faint dotted/grid background for hero surfaces. */
+  .bg-dots {
+    background-image: radial-gradient(hsl(var(--border) / 0.6) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, hsl(var(--foreground)), hsl(var(--primary)));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .skeleton {
+    position: relative;
+    overflow: hidden;
+    background: hsl(var(--muted) / 0.5);
+  }
+  .skeleton::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsl(var(--foreground) / 0.06),
+      transparent
+    );
+    animation: shimmer 1.6s infinite;
+  }
+
+  /* Numeric / tabular figures for tables and stats. */
+  .tnum {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+  }
+}

@@ -1,0 +1,23 @@
+# ExperimentOS — Backend dependencies
+# Web framework
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+
+# ORM / database
+SQLAlchemy==2.0.36
+
+# Validation / settings
+pydantic==2.10.4
+pydantic-settings==2.7.1
+email-validator==2.2.0
+
+# Auth
+PyJWT==2.10.1
+passlib==1.7.4
+python-multipart==0.0.20
+
+# Analytics / statistics
+numpy==2.2.1
+pandas==2.2.3
+scipy==1.15.1
+statsmodels==0.14.4
